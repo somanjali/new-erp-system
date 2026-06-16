@@ -47,15 +47,8 @@
     @apply bg-slate-300 rounded hover:bg-slate-400 transition-colors;
   }
 
-  /* Enhance card contrast globally against the grid pattern */
+  /* Enhance card contrast globally against the photographic background */
   .bg-white.border {
-    @apply border-slate-200/60 shadow-md shadow-slate-100/50;
+    @apply bg-white/95 border-white/80 shadow-xl shadow-slate-200/40 backdrop-blur-xs;
   }
-}
-
-.bg-grid-blueprint {
-  background-image: 
-    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
