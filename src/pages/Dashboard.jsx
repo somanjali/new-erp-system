@@ -33,10 +33,10 @@ export default function Dashboard() {
       </div>
       
       <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-xs">
-        <h3 className="font-semibold text-slate-900 mb-3">Enterprise Core Metrics</h3>
-        <p className="text-slate-600 mb-4">This dashboard displays aggregated telemetry for raw paddy inventory, finished grain, processing efficiency, and shipping logs.</p>
-        <div className="bg-slate-50 border border-slate-200 rounded p-4 text-xs font-mono text-slate-500">
-          [Telemetry Stream Active: Golden Rice Rise ERP Client UI Shell]
+        <h3 className="font-semibold text-slate-900 mb-3">Mill Overview Summary</h3>
+        <p className="text-slate-600 mb-4">Real-time overview of current paddy intake, active milling runs, and warehouse capacity.</p>
+        <div className="border border-dashed border-slate-200 rounded-lg p-8 flex items-center justify-center bg-slate-50/50">
+          <span className="text-xs text-slate-400 font-medium">No active data logs to display in this period.</span>
         </div>
       </div>
     </div>

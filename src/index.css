@@ -20,7 +20,11 @@
 
 @layer base {
   html, body {
-    @apply text-sm text-slate-700 bg-slate-50 antialiased font-sans h-full m-0 p-0;
+    @apply text-[14.5px] leading-relaxed text-slate-700 bg-slate-50 antialiased font-sans h-full m-0 p-0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-slate-900 tracking-tight;
   }
   
   #root {
