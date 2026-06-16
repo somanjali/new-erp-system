@@ -17,10 +17,7 @@ import Ledger from './pages/Ledger';
 import Worker from './pages/Worker';
 import Attendance from './pages/Attendance';
 import Salary from './pages/Salary';
-import SpareParts from './pages/SpareParts';
-import Maintenance from './pages/Maintenance';
-import Transport from './pages/Transport';
-import Electricity from './pages/Electricity';
+import Infrastructure from './pages/Infrastructure';
 import Profile from './pages/Profile';
 
 function AppContent() {
@@ -48,10 +45,10 @@ function AppContent() {
           <Route path="/worker" element={<Worker />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/salary" element={<Salary />} />
-          <Route path="/spare-parts" element={<SpareParts />} />
-          <Route path="/maintenance" element={<Maintenance />} />
-          <Route path="/transport" element={<Transport />} />
-          <Route path="/electricity" element={<Electricity />} />
+          <Route path="/spare-parts" element={<Infrastructure />} />
+          <Route path="/maintenance" element={<Infrastructure />} />
+          <Route path="/transport" element={<Infrastructure />} />
+          <Route path="/electricity" element={<Infrastructure />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </DashboardLayout>
