@@ -23,6 +23,7 @@ export default function PaddyEntry() {
   const [tareWeight, setTareWeight] = useState('16.0'); // Standard average truck tare weight
   const [netWeight, setNetWeight] = useState(0);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [storageDestination, setStorageDestination] = useState('Silo B');
 
   // Dynamic Net Weight Calculation
   useEffect(() => {
@@ -54,12 +55,7 @@ export default function PaddyEntry() {
       return;
     }
 
-    // Assign silo based on paddy variety
-    let silo = 'General Storage';
-    if (paddyVariety === 'Basmati') silo = 'Silo A';
-    else if (paddyVariety === 'Sona Masuri') silo = 'Silo B';
-    else if (paddyVariety === 'Jyothi') silo = 'Godown 1';
-    else if (paddyVariety === 'Jeera Rice') silo = 'Godown 2';
+    const silo = storageDestination;
 
     const newGatePassId = `GP-26-${Math.floor(413 + Math.random() * 100)}`;
     const newEntry = {
@@ -157,8 +153,8 @@ export default function PaddyEntry() {
               </div>
             </div>
 
-            {/* Paddy Variety & Moisture */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Paddy Variety, Storage Destination & Moisture */}
+            <div className="grid grid-cols-3 gap-4">
               <div className="space-y-1.5">
                 <label className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Paddy Variety</label>
                 <select
@@ -170,6 +166,20 @@ export default function PaddyEntry() {
                   <option value="Jyothi">Jyothi Rice</option>
                   <option value="Basmati">Basmati (Premium)</option>
                   <option value="Jeera Rice">Jeera Rice</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">Storage Destination</label>
+                <select
+                  value={storageDestination}
+                  onChange={(e) => setStorageDestination(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-amber-500 text-xs text-slate-800 font-medium cursor-pointer"
+                >
+                  <option value="Silo A">Silo A</option>
+                  <option value="Silo B">Silo B</option>
+                  <option value="Godown 1">Godown 1</option>
+                  <option value="Godown 2">Godown 2</option>
                 </select>
               </div>
 
