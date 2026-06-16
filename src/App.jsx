@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './context/AppContext';
+import { AppProvider, useApp } from './context/AppContext';
 import DashboardLayout from './layouts/DashboardLayout';
 
 // Page imports
+import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import PaddyEntry from './pages/PaddyEntry';
 import Production from './pages/Production';
@@ -22,32 +23,46 @@ import Transport from './pages/Transport';
 import Electricity from './pages/Electricity';
 import Profile from './pages/Profile';
 
+function AppContent() {
+  const { isAuthenticated } = useApp();
+
+  // Route Guard: If not authenticated, force LoginPage view
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
+
+  // Once authenticated, render standard App shell layout with routing
+  return (
+    <BrowserRouter>
+      <DashboardLayout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/paddy-entry" element={<PaddyEntry />} />
+          <Route path="/production" element={<Production />} />
+          <Route path="/warehouse" element={<Warehouse />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/supplier" element={<Supplier />} />
+          <Route path="/buyer" element={<Buyer />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/ledger" element={<Ledger />} />
+          <Route path="/worker" element={<Worker />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/salary" element={<Salary />} />
+          <Route path="/spare-parts" element={<SpareParts />} />
+          <Route path="/maintenance" element={<Maintenance />} />
+          <Route path="/transport" element={<Transport />} />
+          <Route path="/electricity" element={<Electricity />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </DashboardLayout>
+    </BrowserRouter>
+  );
+}
+
 export default function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
-        <DashboardLayout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/paddy-entry" element={<PaddyEntry />} />
-            <Route path="/production" element={<Production />} />
-            <Route path="/warehouse" element={<Warehouse />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/supplier" element={<Supplier />} />
-            <Route path="/buyer" element={<Buyer />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/ledger" element={<Ledger />} />
-            <Route path="/worker" element={<Worker />} />
-            <Route path="/attendance" element={<Attendance />} />
-            <Route path="/salary" element={<Salary />} />
-            <Route path="/spare-parts" element={<SpareParts />} />
-            <Route path="/maintenance" element={<Maintenance />} />
-            <Route path="/transport" element={<Transport />} />
-            <Route path="/electricity" element={<Electricity />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </DashboardLayout>
-      </BrowserRouter>
+      <AppContent />
     </AppProvider>
   );
 }

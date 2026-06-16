@@ -8,6 +8,19 @@ export const AppProvider = ({ children }) => {
     fromDate: '2026-06-01',
     toDate: '2026-06-30',
   });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const login = (username, password) => {
+    if (username.toLowerCase() === 'admin' && password === 'admin') {
+      setIsAuthenticated(true);
+      return true;
+    }
+    return false;
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
 
   // Mock list of warehouses/silos for global filter selector
   const warehouses = [
@@ -25,6 +38,9 @@ export const AppProvider = ({ children }) => {
       dateRange,
       setDateRange,
       warehouses,
+      isAuthenticated,
+      login,
+      logout,
     }}>
       {children}
     </AppContext.Provider>
